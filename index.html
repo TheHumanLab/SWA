@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -14,7 +13,613 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="styles.css">
+<style>
+
+/* =========================================
+KJ STRUCTURAL INTELLIGENCE PLATFORM
+========================================= */
+
+:root{
+
+--bg:#080808;
+--panel:#111111;
+--panel2:#171717;
+
+--gold:#b89b63;
+
+--text:#f4f0e7;
+--muted:#a09a8d;
+
+--border:#242424;
+
+--danger:#7d3d3d;
+--success:#5b745f;
+
+}
+
+/* =========================================
+RESET
+========================================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+background:var(--bg);
+
+color:var(--text);
+
+font-family:'Inter',sans-serif;
+
+line-height:1.8;
+
+overflow-x:hidden;
+
+}
+
+/* =========================================
+GRID OVERLAY
+========================================= */
+
+.grid-overlay{
+
+position:fixed;
+
+inset:0;
+
+background-image:
+
+linear-gradient(
+rgba(255,255,255,.025) 1px,
+transparent 1px
+),
+
+linear-gradient(
+90deg,
+rgba(255,255,255,.025) 1px,
+transparent 1px
+);
+
+background-size:80px 80px;
+
+pointer-events:none;
+
+z-index:0;
+
+}
+
+/* =========================================
+TYPOGRAPHY
+========================================= */
+
+h1,h2,h3,h4{
+
+font-family:
+'Cormorant Garamond',
+serif;
+
+font-weight:500;
+
+}
+
+h1{
+
+font-size:clamp(
+3rem,
+8vw,
+6rem
+);
+
+line-height:1.05;
+
+margin-bottom:25px;
+
+}
+
+h2{
+
+font-size:clamp(
+2rem,
+4vw,
+3rem
+);
+
+margin-bottom:30px;
+
+}
+
+h3{
+
+font-size:1.6rem;
+
+margin-bottom:15px;
+
+}
+
+p{
+
+color:var(--muted);
+
+}
+
+/* =========================================
+LAYOUT
+========================================= */
+
+.container{
+
+width:min(
+1200px,
+92%
+);
+
+margin:auto;
+
+}
+
+.hidden{
+
+display:none;
+
+}
+
+/* =========================================
+HERO
+========================================= */
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+align-items:center;
+justify-content:center;
+
+text-align:center;
+
+padding:80px 40px;
+
+position:relative;
+
+z-index:2;
+
+}
+
+.hero-content{
+
+max-width:900px;
+
+}
+
+.eyebrow{
+
+letter-spacing:.35em;
+
+font-size:.85rem;
+
+color:var(--gold);
+
+margin-bottom:25px;
+
+text-transform:uppercase;
+
+}
+
+.hero p{
+
+max-width:720px;
+
+margin:auto;
+
+font-size:1.1rem;
+
+}
+
+/* =========================================
+BUTTONS
+========================================= */
+
+.btn-primary{
+
+padding:18px 40px;
+
+margin-top:40px;
+
+background:transparent;
+
+border:1px solid var(--gold);
+
+color:var(--gold);
+
+cursor:pointer;
+
+font-size:1rem;
+
+transition:.3s ease;
+
+}
+
+.btn-primary:hover{
+
+background:var(--gold);
+
+color:#000;
+
+}
+
+/* =========================================
+AUDIT
+========================================= */
+
+#auditContainer{
+
+padding:120px 0;
+
+position:relative;
+
+z-index:2;
+
+}
+
+#auditIntro{
+
+width:min(
+1100px,
+92%
+);
+
+margin:auto;
+
+margin-bottom:100px;
+
+padding:50px;
+
+background:var(--panel);
+
+border:1px solid var(--border);
+
+}
+
+.scale-guide{
+
+margin-top:40px;
+
+display:grid;
+
+grid-template-columns:
+repeat(
+5,
+1fr
+);
+
+gap:15px;
+
+}
+
+.scale-guide div{
+
+padding:18px;
+
+background:var(--panel2);
+
+border:1px solid var(--border);
+
+text-align:center;
+
+font-size:.9rem;
+
+}
+
+/* =========================================
+SECTIONS
+========================================= */
+
+.diagnostic-section{
+
+width:min(
+1100px,
+92%
+);
+
+margin:auto;
+
+margin-bottom:120px;
+
+}
+
+.section-header{
+
+margin-bottom:50px;
+
+padding-bottom:25px;
+
+border-bottom:
+1px solid
+var(--border);
+
+}
+
+/* =========================================
+QUESTION CARD
+========================================= */
+
+.question-card{
+
+background:var(--panel);
+
+border:1px solid var(--border);
+
+padding:35px;
+
+margin-bottom:25px;
+
+}
+
+.question-number{
+
+color:var(--gold);
+
+font-size:.9rem;
+
+margin-bottom:15px;
+
+letter-spacing:.15em;
+
+}
+
+.question-text{
+
+font-size:1.05rem;
+
+margin-bottom:25px;
+
+}
+
+/* =========================================
+RESPONSE SCALE
+========================================= */
+
+.response-scale{
+
+display:grid;
+
+grid-template-columns:
+repeat(
+5,
+1fr
+);
+
+gap:12px;
+
+}
+
+.scale-option{
+
+display:flex;
+
+align-items:center;
+justify-content:center;
+
+padding:14px;
+
+background:var(--panel2);
+
+border:1px solid var(--border);
+
+cursor:pointer;
+
+transition:.25s ease;
+
+}
+
+.scale-option:hover{
+
+border-color:
+var(--gold);
+
+}
+
+.scale-option input{
+
+margin-right:8px;
+
+}
+
+/* =========================================
+OBSERVATIONS
+========================================= */
+
+.observation-card{
+
+background:var(--panel);
+
+border:1px solid var(--border);
+
+padding:35px;
+
+margin-top:35px;
+
+}
+
+textarea{
+
+width:100%;
+
+margin-top:20px;
+
+background:#0b0b0b;
+
+border:1px solid var(--border);
+
+color:var(--text);
+
+padding:20px;
+
+resize:vertical;
+
+min-height:180px;
+
+font-family:'Inter';
+
+}
+
+/* =========================================
+SUBMIT
+========================================= */
+
+.submit-area{
+
+width:min(
+1100px,
+92%
+);
+
+margin:auto;
+
+text-align:center;
+
+padding-bottom:120px;
+
+}
+
+/* =========================================
+REPORT
+========================================= */
+
+#report{
+
+padding:120px 0;
+
+position:relative;
+
+z-index:2;
+
+}
+
+.executive-report{
+
+width:min(
+1200px,
+92%
+);
+
+margin:auto;
+
+}
+
+.report-header{
+
+margin-bottom:60px;
+
+}
+
+.sii-panel{
+
+padding:50px;
+
+background:var(--panel);
+
+border:1px solid var(--border);
+
+margin-bottom:60px;
+
+text-align:center;
+
+}
+
+.sii-value{
+
+font-size:5rem;
+
+font-family:
+'Cormorant Garamond',
+serif;
+
+color:var(--gold);
+
+}
+
+.sii-label{
+
+font-size:1.2rem;
+
+letter-spacing:.1em;
+
+}
+
+.section{
+
+margin-bottom:60px;
+
+padding:40px;
+
+background:var(--panel);
+
+border:1px solid var(--border);
+
+}
+
+.condition,
+.interaction{
+
+padding:25px;
+
+margin-bottom:20px;
+
+background:var(--panel2);
+
+border-left:3px solid var(--gold);
+
+}
+
+.dimension-row{
+
+display:grid;
+
+grid-template-columns:
+2fr 1fr 1fr;
+
+padding:18px 0;
+
+border-bottom:
+1px solid
+var(--border);
+
+}
+
+/* =========================================
+PRINT
+========================================= */
+
+@media print{
+
+.grid-overlay,
+.btn-primary{
+
+display:none;
+
+}
+
+body{
+
+background:white;
+
+color:black;
+
+}
+
+}
+
+</style>
 
 </head>
 
@@ -24,97 +629,1353 @@
 
 <header class="hero">
 
-```
 <div class="hero-content">
 
-    <div class="eyebrow">
-        KJ STRUCTURAL INTELLIGENCE PLATFORM
-    </div>
+<div class="eyebrow">
+KJ Structural Intelligence Platform
+</div>
 
-    <h1>
-        Structural Workforce Audit
-    </h1>
+<h1>
+Structural Workforce Audit
+</h1>
 
-    <p>
-        Evaluate how structural conditions shape operational behaviour,
-        execution continuity, visibility movement, dependency pressure,
-        and structural sustainability throughout the organisation.
-    </p>
+<p>
 
-    <button
-        id="startBtn"
-        class="btn-primary">
+Evaluate how structural conditions shape
+operational behaviour, execution continuity,
+visibility movement, dependency pressure,
+and structural sustainability throughout
+the organisation.
 
-        Begin Diagnostic
+</p>
 
-    </button>
+<button
+id="startBtn"
+class="btn-primary">
+
+Begin Diagnostic
+
+</button>
 
 </div>
-```
 
 </header>
 
 <main
-    id="auditContainer"
-    class="hidden">
+id="auditContainer"
+class="hidden">
 
-```
 <section id="auditIntro">
 
-    <h2>
-        Executive Diagnostic Brief
-    </h2>
+<h2>
+Executive Diagnostic Brief
+</h2>
 
-    <p>
-        Please respond based upon lived operational experience rather than intended process, formal structure, or aspirational policy.
-    </p>
+<p>
 
-    <div class="scale-guide">
+Please respond based upon lived
+operational experience rather than
+intended process, formal structure,
+or aspirational policy.
 
-        <div>1 — Rarely Observed</div>
-        <div>2 — Occasionally Observed</div>
-        <div>3 — Operationally Inconsistent</div>
-        <div>4 — Frequently Observed</div>
-        <div>5 — Structurally Consistent</div>
+</p>
 
-    </div>
+<div class="scale-guide">
+
+<div>1<br>Rarely Observed</div>
+<div>2<br>Occasionally Observed</div>
+<div>3<br>Operationally Inconsistent</div>
+<div>4<br>Frequently Observed</div>
+<div>5<br>Structurally Consistent</div>
+
+</div>
 
 </section>
 
-<section id="questions">
-
-</section>
+<section id="questions"></section>
 
 <section class="submit-area">
 
-    <button
-        id="generateReport"
-        class="btn-primary">
+<button
+id="generateReport"
+class="btn-primary">
 
-        Generate Executive Assessment
+Generate Executive Assessment
 
-    </button>
+</button>
 
 </section>
-```
 
 </main>
 
 <section
-    id="report"
-    class="hidden">
+id="report"
+class="hidden">
+<script>
 
-```
-<div
-    id="reportContent">
+/* =========================================
+KJ-SWA DATASET
+========================================= */
+
+const KJSWA = {
+
+id: "KJ-SWA",
+
+name: "Structural Workforce Audit",
+
+version: "1.0.0",
+
+dimensions: [
+
+{
+id: "movement",
+
+title: "Operational Movement",
+
+observationPrompt:
+"What recurring operational behaviour most frequently disrupts execution continuity, workflow movement, or sustainable coordination across the organisation?",
+
+questions: [
+
+{
+id:1,
+reverse:false,
+text:"Operational work moves consistently through teams and departments without repeated disruption."
+},
+
+{
+id:2,
+reverse:false,
+text:"Workflow movement remains stable during periods of increased operational demand."
+},
+
+{
+id:3,
+reverse:true,
+text:"Operational coordination relies heavily on repeated manual follow-up."
+},
+
+{
+id:4,
+reverse:true,
+text:"Operational routing changes frequently outside intended processes."
+},
+
+{
+id:5,
+reverse:false,
+text:"Cross-functional coordination remains stable during operational pressure."
+},
+
+{
+id:6,
+reverse:true,
+text:"Operational movement becomes increasingly reactive during periods of strain."
+}
+
+]
+
+},
+
+{
+id: "role",
+
+title: "Role & Execution Stability",
+
+observationPrompt:
+"What recurring operational condition most frequently destabilises accountability, ownership continuity, or sustainable execution behaviour?",
+
+questions: [
+
+{
+id:7,
+reverse:false,
+text:"Operational ownership remains consistent across teams and departments."
+},
+
+{
+id:8,
+reverse:true,
+text:"Responsibility movement frequently shifts during operational pressure."
+},
+
+{
+id:9,
+reverse:true,
+text:"Execution reliability depends heavily on specific individuals."
+},
+
+{
+id:10,
+reverse:true,
+text:"Accountability behaviour weakens during periods of operational strain."
+},
+
+{
+id:11,
+reverse:false,
+text:"Operational continuity remains stable when key individuals are unavailable."
+},
+
+{
+id:12,
+reverse:true,
+text:"Responsibility boundaries become increasingly inconsistent as complexity expands."
+}
+
+]
+
+},
+
+{
+id:"visibility",
+
+title:"Visibility & Informational Movement",
+
+observationPrompt:
+"What operational condition most frequently limits reliable visibility into execution movement, coordination behaviour, or operational awareness?",
+
+questions:[
+
+{
+id:13,
+reverse:false,
+text:"Teams receive reliable operational information required to maintain execution continuity."
+},
+
+{
+id:14,
+reverse:true,
+text:"Operational visibility weakens during periods of increased demand."
+},
+
+{
+id:15,
+reverse:true,
+text:"Departments frequently operate with inconsistent operational interpretation."
+},
+
+{
+id:16,
+reverse:true,
+text:"Reporting movement becomes fragmented during operational strain."
+},
+
+{
+id:17,
+reverse:false,
+text:"Operational reporting reflects lived execution conditions accurately."
+},
+
+{
+id:18,
+reverse:false,
+text:"Informational movement supports sustainable operational coordination across the organisation."
+}
+
+]
+
+},
+
+{
+id:"dependency",
+
+title:"Dependency Load & Operational Pressure",
+
+observationPrompt:
+"What recurring dependency or operational strain most significantly affects sustainable execution continuity across the organisation?",
+
+questions:[
+
+{
+id:19,
+reverse:true,
+text:"Operational continuity depends heavily on specific individuals or teams."
+},
+
+{
+id:20,
+reverse:true,
+text:"Work regularly requires manual intervention to maintain continuity."
+},
+
+{
+id:21,
+reverse:false,
+text:"Operational systems remain stable during increased execution demand."
+},
+
+{
+id:22,
+reverse:true,
+text:"Urgency regularly replaces stable operational prioritisation behaviour."
+},
+
+{
+id:23,
+reverse:true,
+text:"Operational strain accumulates faster than systems adapt structurally."
+},
+
+{
+id:24,
+reverse:false,
+text:"Structural systems absorb complexity sustainably without excessive manual coordination."
+}
+
+]
+
+},
+
+{
+id:"interaction",
+
+title:"Structural System Interaction",
+
+observationPrompt:
+"What recurring organisational behaviour most clearly signals increasing operational strain or structural instability throughout the workforce environment?",
+
+questions:[
+
+{
+id:25,
+reverse:true,
+text:"Operational movement across the organisation depends more on individual effort than stable structural systems."
+},
+
+{
+id:26,
+reverse:false,
+text:"Operational systems remain structurally stable during periods of rapid organisational demand."
+},
+
+{
+id:27,
+reverse:true,
+text:"Work frequently reroutes informally to maintain execution continuity."
+},
+
+{
+id:28,
+reverse:false,
+text:"Organisational systems continue functioning effectively without excessive escalation behaviour."
+},
+
+{
+id:29,
+reverse:true,
+text:"Operational continuity weakens noticeably during periods of increased organisational pressure."
+},
+
+{
+id:30,
+reverse:false,
+text:"The organisation currently operates through structurally sustainable operational systems."
+}
+
+]
+
+}
+
+]
+
+};
+
+/* =========================================
+CONDITION LIBRARY
+========================================= */
+
+const CONDITIONS = {
+
+VISIBILITY_DEGRADATION:{
+title:"Visibility Degradation",
+severity:"High",
+narrative:
+"Visibility degradation appears to be limiting coordination continuity across operational boundaries."
+},
+
+DEPENDENCY_CONCENTRATION:{
+title:"Dependency Concentration",
+severity:"High",
+narrative:
+"Execution continuity appears increasingly dependent upon concentrated operational knowledge and manual intervention behaviour."
+},
+
+ACCOUNTABILITY_DRIFT:{
+title:"Accountability Drift",
+severity:"Medium",
+narrative:
+"Responsibility boundaries appear vulnerable to drift under increasing execution complexity and operational pressure."
+},
+
+EXECUTION_FRAGMENTATION:{
+title:"Execution Fragmentation",
+severity:"High",
+narrative:
+"Execution movement appears increasingly fragmented across operational pathways."
+},
+
+CONTINUITY_RISK:{
+title:"Continuity Risk",
+severity:"Critical",
+narrative:
+"Operational continuity appears increasingly vulnerable to disruption during periods of elevated demand."
+}
+
+};
+/* =========================================
+RENDERING ENGINE
+========================================= */
+
+function renderScale(questionId){
+
+let html='';
+
+for(let i=1;i<=5;i++){
+
+html += `
+
+<label class="scale-option">
+
+<input
+type="radio"
+name="q${questionId}"
+value="${i}">
+
+<span>${i}</span>
+
+</label>
+
+`;
+
+}
+
+return html;
+
+}
+
+function renderDiagnostic(){
+
+const container =
+document.getElementById(
+'questions'
+);
+
+container.innerHTML='';
+
+KJSWA.dimensions.forEach(
+section=>{
+
+const wrapper =
+document.createElement(
+'section'
+);
+
+wrapper.className =
+'diagnostic-section';
+
+wrapper.innerHTML = `
+
+<div class="section-header">
+
+<h2>
+${section.title}
+</h2>
 
 </div>
-```
+
+`;
+
+section.questions.forEach(
+question=>{
+
+const card =
+document.createElement(
+'div'
+);
+
+card.className =
+'question-card';
+
+card.innerHTML = `
+
+<div class="question-number">
+Q${question.id}
+</div>
+
+<div class="question-text">
+${question.text}
+</div>
+
+<div class="response-scale">
+
+${renderScale(
+question.id
+)}
+
+</div>
+
+`;
+
+wrapper.appendChild(
+card
+);
+
+}
+);
+
+const observation =
+document.createElement(
+'div'
+);
+
+observation.className =
+'observation-card';
+
+observation.innerHTML = `
+
+<h3>
+Structural Observation
+</h3>
+
+<p>
+${section.observationPrompt}
+</p>
+
+<textarea
+id="obs-${section.id}"
+placeholder="Record recurring structural conditions, operational patterns or observable behaviours."
+></textarea>
+
+`;
+
+wrapper.appendChild(
+observation
+);
+
+container.appendChild(
+wrapper
+);
+
+});
+
+}
+
+/* =========================================
+VALIDATION
+========================================= */
+
+function validateAssessment(){
+
+const missing=[];
+
+KJSWA.dimensions.forEach(
+section=>{
+
+section.questions.forEach(
+question=>{
+
+const answer =
+document.querySelector(
+`input[name="q${question.id}"]:checked`
+);
+
+if(!answer){
+
+missing.push(
+question.id
+);
+
+}
+
+});
+
+});
+
+return missing;
+
+}
+
+/* =========================================
+COLLECT RESPONSES
+========================================= */
+
+function collectResponses(){
+
+const responses={};
+
+KJSWA.dimensions.forEach(
+section=>{
+
+section.questions.forEach(
+question=>{
+
+const selected =
+document.querySelector(
+`input[name="q${question.id}"]:checked`
+);
+
+responses[
+question.id
+] = parseInt(
+selected.value
+);
+
+});
+
+});
+
+return responses;
+
+}
+
+function collectObservations(){
+
+const observations={};
+
+KJSWA.dimensions.forEach(
+section=>{
+
+observations[
+section.id
+] =
+document.getElementById(
+`obs-${section.id}`
+).value || '';
+
+});
+
+return observations;
+
+}
+
+/* =========================================
+SCORING ENGINE
+========================================= */
+
+function adjustedScore(
+question,
+value
+){
+
+if(question.reverse){
+
+return 6-value;
+
+}
+
+return value;
+
+}
+
+function calculateDimension(
+sectionId,
+responses
+){
+
+const section =
+KJSWA.dimensions.find(
+s=>s.id===sectionId
+);
+
+let total=0;
+
+section.questions.forEach(
+question=>{
+
+total += adjustedScore(
+question,
+responses[
+question.id
+]
+);
+
+});
+
+const max =
+section.questions.length * 5;
+
+return Math.round(
+(total/max)*100
+);
+
+}
+
+function calculateScores(
+responses
+){
+
+return {
+
+movement:
+calculateDimension(
+'movement',
+responses
+),
+
+role:
+calculateDimension(
+'role',
+responses
+),
+
+visibility:
+calculateDimension(
+'visibility',
+responses
+),
+
+dependency:
+calculateDimension(
+'dependency',
+responses
+),
+
+interaction:
+calculateDimension(
+'interaction',
+responses
+)
+
+};
+
+}
+
+function calculateSII(
+scores
+){
+
+const values =
+Object.values(
+scores
+);
+
+const total =
+values.reduce(
+(a,b)=>a+b,
+0
+);
+
+return Math.round(
+total / values.length
+);
+
+}
+
+/* =========================================
+STRUCTURAL CONDITIONS
+========================================= */
+
+function detectConditions(
+scores
+){
+
+const findings=[];
+
+if(
+scores.visibility < 60
+){
+
+findings.push(
+CONDITIONS
+.VISIBILITY_DEGRADATION
+);
+
+}
+
+if(
+scores.role < 60
+){
+
+findings.push(
+CONDITIONS
+.ACCOUNTABILITY_DRIFT
+);
+
+}
+
+if(
+scores.dependency < 60
+){
+
+findings.push(
+CONDITIONS
+.DEPENDENCY_CONCENTRATION
+);
+
+}
+
+if(
+scores.movement < 60
+){
+
+findings.push(
+CONDITIONS
+.EXECUTION_FRAGMENTATION
+);
+
+}
+
+if(
+scores.interaction < 60
+){
+
+findings.push(
+CONDITIONS
+.CONTINUITY_RISK
+);
+
+}
+
+return findings;
+
+}
+
+function detectInteractions(
+scores
+){
+
+const interactions=[];
+
+if(
+scores.visibility < 60 &&
+scores.movement < 60
+){
+
+interactions.push({
+
+title:
+'Visibility Driven Coordination Strain',
+
+severity:
+'High',
+
+narrative:
+'Execution continuity appears constrained by deteriorating informational movement across operational boundaries.'
+
+});
+
+}
+
+if(
+scores.role < 60 &&
+scores.dependency < 60
+){
+
+interactions.push({
+
+title:
+'Dependency Reinforced Accountability Drift',
+
+severity:
+'High',
+
+narrative:
+'Operational continuity appears increasingly reliant upon key individuals while ownership stability simultaneously weakens.'
+
+});
+
+}
+
+if(
+scores.dependency < 60 &&
+scores.interaction < 60
+){
+
+interactions.push({
+
+title:
+'Adaptive Capacity Weakness',
+
+severity:
+'High',
+
+narrative:
+'Structural adaptation mechanisms appear insufficient relative to operational complexity demands.'
+
+});
+
+}
+
+return interactions;
+
+}
+/* =========================================
+RENDERING ENGINE
+========================================= */
+
+function renderScale(questionId){
+
+let html='';
+
+for(let i=1;i<=5;i++){
+
+html += `
+
+<label class="scale-option">
+
+<input
+type="radio"
+name="q${questionId}"
+value="${i}">
+
+<span>${i}</span>
+
+</label>
+
+`;
+
+}
+
+return html;
+
+}
+
+function renderDiagnostic(){
+
+const container =
+document.getElementById(
+'questions'
+);
+
+container.innerHTML='';
+
+KJSWA.dimensions.forEach(
+section=>{
+
+const wrapper =
+document.createElement(
+'section'
+);
+
+wrapper.className =
+'diagnostic-section';
+
+wrapper.innerHTML = `
+
+<div class="section-header">
+
+<h2>
+${section.title}
+</h2>
+
+</div>
+
+`;
+
+section.questions.forEach(
+question=>{
+
+const card =
+document.createElement(
+'div'
+);
+
+card.className =
+'question-card';
+
+card.innerHTML = `
+
+<div class="question-number">
+Q${question.id}
+</div>
+
+<div class="question-text">
+${question.text}
+</div>
+
+<div class="response-scale">
+
+${renderScale(
+question.id
+)}
+
+</div>
+
+`;
+
+wrapper.appendChild(
+card
+);
+
+}
+);
+
+const observation =
+document.createElement(
+'div'
+);
+
+observation.className =
+'observation-card';
+
+observation.innerHTML = `
+
+<h3>
+Structural Observation
+</h3>
+
+<p>
+${section.observationPrompt}
+</p>
+
+<textarea
+id="obs-${section.id}"
+placeholder="Record recurring structural conditions, operational patterns or observable behaviours."
+></textarea>
+
+`;
+
+wrapper.appendChild(
+observation
+);
+
+container.appendChild(
+wrapper
+);
+
+});
+
+}
+
+/* =========================================
+VALIDATION
+========================================= */
+
+function validateAssessment(){
+
+const missing=[];
+
+KJSWA.dimensions.forEach(
+section=>{
+
+section.questions.forEach(
+question=>{
+
+const answer =
+document.querySelector(
+`input[name="q${question.id}"]:checked`
+);
+
+if(!answer){
+
+missing.push(
+question.id
+);
+
+}
+
+});
+
+});
+
+return missing;
+
+}
+
+/* =========================================
+COLLECT RESPONSES
+========================================= */
+
+function collectResponses(){
+
+const responses={};
+
+KJSWA.dimensions.forEach(
+section=>{
+
+section.questions.forEach(
+question=>{
+
+const selected =
+document.querySelector(
+`input[name="q${question.id}"]:checked`
+);
+
+responses[
+question.id
+] = parseInt(
+selected.value
+);
+
+});
+
+});
+
+return responses;
+
+}
+
+function collectObservations(){
+
+const observations={};
+
+KJSWA.dimensions.forEach(
+section=>{
+
+observations[
+section.id
+] =
+document.getElementById(
+`obs-${section.id}`
+).value || '';
+
+});
+
+return observations;
+
+}
+
+/* =========================================
+SCORING ENGINE
+========================================= */
+
+function adjustedScore(
+question,
+value
+){
+
+if(question.reverse){
+
+return 6-value;
+
+}
+
+return value;
+
+}
+
+function calculateDimension(
+sectionId,
+responses
+){
+
+const section =
+KJSWA.dimensions.find(
+s=>s.id===sectionId
+);
+
+let total=0;
+
+section.questions.forEach(
+question=>{
+
+total += adjustedScore(
+question,
+responses[
+question.id
+]
+);
+
+});
+
+const max =
+section.questions.length * 5;
+
+return Math.round(
+(total/max)*100
+);
+
+}
+
+function calculateScores(
+responses
+){
+
+return {
+
+movement:
+calculateDimension(
+'movement',
+responses
+),
+
+role:
+calculateDimension(
+'role',
+responses
+),
+
+visibility:
+calculateDimension(
+'visibility',
+responses
+),
+
+dependency:
+calculateDimension(
+'dependency',
+responses
+),
+
+interaction:
+calculateDimension(
+'interaction',
+responses
+)
+
+};
+
+}
+
+function calculateSII(
+scores
+){
+
+const values =
+Object.values(
+scores
+);
+
+const total =
+values.reduce(
+(a,b)=>a+b,
+0
+);
+
+return Math.round(
+total / values.length
+);
+
+}
+
+/* =========================================
+STRUCTURAL CONDITIONS
+========================================= */
+
+function detectConditions(
+scores
+){
+
+const findings=[];
+
+if(
+scores.visibility < 60
+){
+
+findings.push(
+CONDITIONS
+.VISIBILITY_DEGRADATION
+);
+
+}
+
+if(
+scores.role < 60
+){
+
+findings.push(
+CONDITIONS
+.ACCOUNTABILITY_DRIFT
+);
+
+}
+
+if(
+scores.dependency < 60
+){
+
+findings.push(
+CONDITIONS
+.DEPENDENCY_CONCENTRATION
+);
+
+}
+
+if(
+scores.movement < 60
+){
+
+findings.push(
+CONDITIONS
+.EXECUTION_FRAGMENTATION
+);
+
+}
+
+if(
+scores.interaction < 60
+){
+
+findings.push(
+CONDITIONS
+.CONTINUITY_RISK
+);
+
+}
+
+return findings;
+
+}
+
+function detectInteractions(
+scores
+){
+
+const interactions=[];
+
+if(
+scores.visibility < 60 &&
+scores.movement < 60
+){
+
+interactions.push({
+
+title:
+'Visibility Driven Coordination Strain',
+
+severity:
+'High',
+
+narrative:
+'Execution continuity appears constrained by deteriorating informational movement across operational boundaries.'
+
+});
+
+}
+
+if(
+scores.role < 60 &&
+scores.dependency < 60
+){
+
+interactions.push({
+
+title:
+'Dependency Reinforced Accountability Drift',
+
+severity:
+'High',
+
+narrative:
+'Operational continuity appears increasingly reliant upon key individuals while ownership stability simultaneously weakens.'
+
+});
+
+}
+
+if(
+scores.dependency < 60 &&
+scores.interaction < 60
+){
+
+interactions.push({
+
+title:
+'Adaptive Capacity Weakness',
+
+severity:
+'High',
+
+narrative:
+'Structural adaptation mechanisms appear insufficient relative to operational complexity demands.'
+
+});
+
+}
+
+return interactions;
+
+}<div id="reportContent"></div>
 
 </section>
-
-<script type="module" src="app.js"></script>
-
-</body>
-
-</html>
