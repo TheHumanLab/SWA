@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -8,9 +9,12 @@
 
 <title>KJ-SWA | Structural Workforce Audit</title>
 
-<link rel="stylesheet" href="css/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
 
 </head>
 
@@ -20,41 +24,60 @@
 
 <header class="hero">
 
+```
 <div class="hero-content">
 
-<div class="eyebrow">
-KJ STRUCTURAL INTELLIGENCE PLATFORM
+    <div class="eyebrow">
+        KJ STRUCTURAL INTELLIGENCE PLATFORM
+    </div>
+
+    <h1>
+        Structural Workforce Audit
+    </h1>
+
+    <p>
+        Evaluate how structural conditions shape operational behaviour,
+        execution continuity, visibility movement, dependency pressure,
+        and structural sustainability throughout the organisation.
+    </p>
+
+    <button
+        id="startBtn"
+        class="btn-primary">
+
+        Begin Diagnostic
+
+    </button>
+
 </div>
-
-<h1>
-Structural Workforce Audit
-</h1>
-
-<p>
-Evaluate how structural conditions shape
-execution continuity, visibility movement,
-dependency pressure and workforce behaviour.
-</p>
-
-<button id="startBtn" class="btn-primary">
-Begin Diagnostic
-</button>
-
-</div>
+```
 
 </header>
 
-<main id="auditContainer" class="hidden">
+<main
+    id="auditContainer"
+    class="hidden">
 
+```
 <section id="auditIntro">
 
-<h2>Executive Diagnostic Brief</h2>
+    <h2>
+        Executive Diagnostic Brief
+    </h2>
 
-<p>
-Please respond based on lived operational
-experience rather than intended process,
-formal structure or aspirational policy.
-</p>
+    <p>
+        Please respond based upon lived operational experience rather than intended process, formal structure, or aspirational policy.
+    </p>
+
+    <div class="scale-guide">
+
+        <div>1 — Rarely Observed</div>
+        <div>2 — Occasionally Observed</div>
+        <div>3 — Operationally Inconsistent</div>
+        <div>4 — Frequently Observed</div>
+        <div>5 — Structurally Consistent</div>
+
+    </div>
 
 </section>
 
@@ -64,28 +87,34 @@ formal structure or aspirational policy.
 
 <section class="submit-area">
 
-<button id="generateReport"
-class="btn-primary">
+    <button
+        id="generateReport"
+        class="btn-primary">
 
-Generate Executive Assessment
+        Generate Executive Assessment
 
-</button>
+    </button>
 
 </section>
+```
 
 </main>
 
-<section id="report" class="hidden">
+<section
+    id="report"
+    class="hidden">
 
-<div id="reportContent"></div>
+```
+<div
+    id="reportContent">
+
+</div>
+```
 
 </section>
 
-<script src="js/questions.js"></script>
-<script src="js/scoring.js"></script>
-<script src="js/interpretation.js"></script>
-<script src="js/reporting.js"></script>
-<script src="js/app.js"></script>
+<script type="module" src="app.js"></script>
 
 </body>
+
 </html>
