@@ -1,55 +1,77 @@
-function adjustedScore(question,value){
+/*
+=========================================
+KJ REPORTING ENGINE
+=========================================
 
-if(question.reverse){
+Purpose:
 
-return 6-value;
+Transform structural findings into
+executive-grade intelligence reports.
 
-}
+Inputs:
 
-return value;
+scores
+conditions
+interactions
+risk
+observations
+narrative
 
-}
+Outputs:
 
-function calculateDimension(sectionId,responses){
+Executive Report Object
 
-const section=
-sections.find(
-s=>s.id===sectionId
-);
+=========================================
+*/
 
-let total=0;
+export function buildExecutiveReport({
 
-section.questions.forEach(q=>{
+scores,
+sii,
+risk,
+conditions,
+interactions,
+observations,
+narrative
 
-total+=adjustedScore(
-q,
-responses[q.id]
-);
+}){
 
-});
+return {
 
-const max=
-section.questions.length*5;
+metadata:{
 
-return Math.round(
-(total/max)*100
-);
+assessment:"KJ-SWA",
 
-}
+generated:new Date()
+.toISOString()
 
-function calculateSII(scores){
+},
 
-const values=
-Object.values(scores);
+executiveSummary:
+buildExecutiveSummary(
+sii,
+risk,
+conditions,
+interactions
+),
 
-const total=
-values.reduce(
-(a,b)=>a+b,
-0
-);
+structuralIntegrityIndex:sii,
 
-return Math.round(
-total/values.length
-);
+risk,
+
+dimensionAnalysis:
+buildDimensionAnalysis(
+scores
+),
+
+conditions,
+
+interactions,
+
+observations,
+
+narrative
+
+};
 
 }
