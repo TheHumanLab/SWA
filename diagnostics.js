@@ -1,129 +1,277 @@
 /*
 =========================================
-KJ STRUCTURAL INTELLIGENCE ENGINE
-=========================================
-
-Purpose:
-
-Convert diagnostic scores into
-structural conditions.
-
-This engine analyses:
-
-• dimension weakness
-• cross-dimensional interactions
-• structural risk patterns
-• continuity threats
-• coordination strain
-• dependency exposure
-
+CONDITION DETECTION
 =========================================
 */
 
-export const CONDITIONS = {
+export function detectConditions(scores){
 
-VISIBILITY_DEGRADATION: {
+    const findings = [];
 
-id: "VISIBILITY_DEGRADATION",
+    if(scores.visibility < 60){
+        findings.push(
+            CONDITIONS.VISIBILITY_DEGRADATION
+        );
+    }
 
-title: "Visibility Degradation",
+    if(scores.dependency < 60){
+        findings.push(
+            CONDITIONS.DEPENDENCY_CONCENTRATION
+        );
+    }
 
-severity: "High",
+    if(scores.role < 60){
+        findings.push(
+            CONDITIONS.ACCOUNTABILITY_DRIFT
+        );
+    }
 
-narrative:
-"Visibility degradation appears to be limiting coordination continuity across operational boundaries."
+    if(scores.movement < 60){
+        findings.push(
+            CONDITIONS.EXECUTION_FRAGMENTATION
+        );
+    }
 
-},
+    if(scores.interaction < 60){
+        findings.push(
+            CONDITIONS.CONTINUITY_RISK
+        );
+    }
 
-DEPENDENCY_CONCENTRATION: {
+    return findings;
+}
 
-id: "DEPENDENCY_CONCENTRATION",
+/*
+=========================================
+INTERACTION DETECTION
+=========================================
+*/
 
-title: "Dependency Concentration",
+export function detectInteractions(scores){
 
-severity: "High",
+    const interactions = [];
 
-narrative:
-"Execution continuity appears increasingly dependent upon concentrated operational knowledge and manual intervention behaviour."
+    if(
+        scores.visibility < 60 &&
+        scores.movement < 60
+    ){
 
-},
+        interactions.push({
 
-ACCOUNTABILITY_DRIFT: {
+            title:
+            "Visibility Driven Coordination Strain",
 
-id: "ACCOUNTABILITY_DRIFT",
+            severity:
+            "High",
 
-title: "Accountability Drift",
+            narrative:
+            "Execution continuity appears constrained by deteriorating informational movement across operational boundaries."
 
-severity: "Medium",
+        });
 
-narrative:
-"Responsibility boundaries appear vulnerable to drift under increasing execution complexity and operational pressure."
+    }
 
-},
+    if(
+        scores.role < 60 &&
+        scores.dependency < 60
+    ){
 
-EXECUTION_FRAGMENTATION: {
+        interactions.push({
 
-id: "EXECUTION_FRAGMENTATION",
+            title:
+            "Dependency Reinforced Accountability Drift",
 
-title: "Execution Fragmentation",
+            severity:
+            "High",
 
-severity: "High",
+            narrative:
+            "Operational continuity appears increasingly reliant upon key individuals while ownership stability simultaneously weakens."
 
-narrative:
-"Execution movement appears increasingly fragmented across operational pathways."
+        });
 
-},
+    }
 
-COORDINATION_STRAIN: {
+    if(
+        scores.dependency < 60 &&
+        scores.interaction < 60
+    ){
 
-id: "COORDINATION_STRAIN",
+        interactions.push({
 
-title: "Coordination Strain",
+            title:
+            "Adaptive Capacity Weakness",
 
-severity: "High",
+            severity:
+            "High",
 
-narrative:
-"Coordination behaviour appears increasingly dependent upon informal routing mechanisms rather than stable structural pathways."
+            narrative:
+            "Structural adaptation mechanisms appear insufficient relative to operational complexity demands."
 
-},
+        });
 
-CONTINUITY_RISK: {
+    }
 
-id: "CONTINUITY_RISK",
+    if(
+        scores.movement < 60 &&
+        scores.role < 60
+    ){
 
-title: "Continuity Risk",
+        interactions.push({
 
-severity: "Critical",
+            title:
+            "Execution Governance Instability",
 
-narrative:
-"Operational continuity appears increasingly vulnerable to disruption during periods of elevated demand."
+            severity:
+            "Medium",
 
-},
+            narrative:
+            "Execution continuity appears increasingly vulnerable as operational movement instability combines with weakened ownership consistency."
 
-ADAPTIVE_CAPACITY_WEAKNESS: {
+        });
 
-id: "ADAPTIVE_CAPACITY_WEAKNESS",
+    }
 
-title: "Adaptive Capacity Weakness",
-
-severity: "High",
-
-narrative:
-"Structural adaptation capacity appears insufficient relative to the level of operational complexity currently being absorbed."
-
-},
-
-GOVERNANCE_WEAKNESS: {
-
-id: "GOVERNANCE_WEAKNESS",
-
-title: "Governance Weakness",
-
-severity: "Medium",
-
-narrative:
-"Governance visibility appears insufficient to consistently reinforce accountability and execution continuity."
+    return interactions;
 
 }
 
-};
+/*
+=========================================
+STRUCTURAL RISK
+=========================================
+*/
+
+export function calculateStructuralRisk(sii){
+
+    if(sii >= 85){
+
+        return {
+            level:"Low",
+            classification:"Structurally Stable"
+        };
+
+    }
+
+    if(sii >= 70){
+
+        return {
+            level:"Moderate",
+            classification:"Operationally Sustainable"
+        };
+
+    }
+
+    if(sii >= 55){
+
+        return {
+            level:"Elevated",
+            classification:"Emerging Structural Friction"
+        };
+
+    }
+
+    if(sii >= 40){
+
+        return {
+            level:"High",
+            classification:"Structural Instability"
+        };
+
+    }
+
+    return {
+        level:"Critical",
+        classification:"Critical Structural Exposure"
+    };
+
+}
+
+/*
+=========================================
+OBSERVATION SYNTHESIS
+=========================================
+*/
+
+export function synthesiseObservations(
+    observations
+){
+
+    const synthesis = [];
+
+    Object.values(
+        observations
+    ).forEach(value => {
+
+        if(
+            value &&
+            value.trim().length > 40
+        ){
+
+            synthesis.push(
+                value.trim()
+            );
+
+        }
+
+    });
+
+    return synthesis;
+
+}
+
+/*
+=========================================
+EXECUTIVE NARRATIVE
+=========================================
+*/
+
+export function buildExecutiveNarrative(
+    sii,
+    conditions,
+    interactions
+){
+
+    let narrative = '';
+
+    if(sii >= 85){
+
+        narrative =
+        'Operational architecture currently demonstrates strong structural continuity across major execution systems.';
+
+    }
+    else if(sii >= 70){
+
+        narrative =
+        'Core operational systems remain broadly sustainable, although emerging areas of structural strain are becoming visible.';
+
+    }
+    else if(sii >= 55){
+
+        narrative =
+        'Multiple structural friction points appear to be influencing execution continuity, coordination behaviour and operational resilience.';
+
+    }
+    else{
+
+        narrative =
+        'Structural instability appears sufficiently developed to create meaningful continuity risk across operational systems.';
+
+    }
+
+    if(conditions.length > 0){
+
+        narrative +=
+        ' Primary structural conditions indicate emerging weaknesses in operational architecture requiring ongoing observation.';
+
+    }
+
+    if(interactions.length > 0){
+
+        narrative +=
+        ' Interaction analysis suggests multiple structural conditions may be reinforcing one another rather than occurring independently.';
+
+    }
+
+    return narrative;
+
+}
