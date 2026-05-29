@@ -1,78 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>KJ-SWA | Structural Workforce Audit</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
 
-<style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-:root{
---bg:#0b0b0b;
---panel:#111111;
---gold:#b89b63;
---text:#f5f1e8;
---muted:#9f9788;
-}
-
-body{
-background:var(--bg);
-color:var(--text);
-font-family:'Inter',sans-serif;
-margin:0;
-}
-
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:60px;
-}
-
-.hero h1{
-font-family:'Cormorant Garamond',serif;
-font-size:5rem;
-font-weight:500;
-letter-spacing:.04em;
-}
-
-.hero p{
-max-width:700px;
-margin:auto;
-color:var(--muted);
-line-height:1.8;
-}
-
-.btn{
-display:inline-block;
-padding:18px 40px;
-border:1px solid var(--gold);
-color:var(--gold);
-text-decoration:none;
-margin-top:30px;
-}
-
-.btn:hover{
-background:var(--gold);
-color:#000;
-}
-
-</style>
 </head>
 
 <body>
 
-<section class="hero">
+<div class="grid-overlay"></div>
 
-<div>
+<header class="hero">
 
-<div style="color:#b89b63;margin-bottom:20px;">
+<div class="hero-content">
+
+<div class="eyebrow">
 KJ STRUCTURAL INTELLIGENCE PLATFORM
 </div>
 
@@ -81,18 +31,61 @@ Structural Workforce Audit
 </h1>
 
 <p>
-Evaluate how structural conditions shape operational behaviour,
-execution continuity, dependency concentration,
-visibility movement and organisational stability.
+Evaluate how structural conditions shape
+execution continuity, visibility movement,
+dependency pressure and workforce behaviour.
 </p>
 
-<a class="btn" href="#audit">
+<button id="startBtn" class="btn-primary">
 Begin Diagnostic
-</a>
+</button>
 
 </div>
 
+</header>
+
+<main id="auditContainer" class="hidden">
+
+<section id="auditIntro">
+
+<h2>Executive Diagnostic Brief</h2>
+
+<p>
+Please respond based on lived operational
+experience rather than intended process,
+formal structure or aspirational policy.
+</p>
+
 </section>
+
+<section id="questions">
+
+</section>
+
+<section class="submit-area">
+
+<button id="generateReport"
+class="btn-primary">
+
+Generate Executive Assessment
+
+</button>
+
+</section>
+
+</main>
+
+<section id="report" class="hidden">
+
+<div id="reportContent"></div>
+
+</section>
+
+<script src="js/questions.js"></script>
+<script src="js/scoring.js"></script>
+<script src="js/interpretation.js"></script>
+<script src="js/reporting.js"></script>
+<script src="js/app.js"></script>
 
 </body>
 </html>
