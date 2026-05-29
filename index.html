@@ -108,44 +108,6 @@ form{margin:0}
   color:var(--text-2);
 }
 .scale-legend .num{font-variant-numeric:tabular-nums;color:var(--accent)}
-.participant-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-  margin-top:12px;
-}
-@media(max-width:720px){.participant-grid{grid-template-columns:1fr}}
-.field{
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:.07em;
-  color:var(--muted);
-}
-.field input{
-  background:var(--deep);
-  border:1px solid var(--line-2);
-  color:var(--text);
-  padding:14px 12px;
-  font-size:15px;
-  font-family:Inter;
-  outline:none;
-  border-radius:0;
-}
-.field input:focus{border-color:var(--accent)}
-.structural-position{
-  background:var(--deep);
-  border:1px solid var(--line);
-  padding:24px 26px;
-  margin:4px 0 36px;
-  font-size:14px;
-  color:var(--text-2);
-}
-.structural-position p{margin:0 0 10px;color:var(--text)}
-.structural-position ul{margin:10px 0 12px 18px;padding:0}
-.structural-position li{margin:5px 0;color:var(--muted)}
 .questions{margin-top:8px}
 .question{
   padding:32px 0;
@@ -198,33 +160,19 @@ form{margin:0}
 .scale input:focus-visible + span{outline:1px solid var(--accent);outline-offset:2px}
 .question.error .q-text{color:var(--accent-light)}
 .question.error .scale span{border-color:var(--accent-dark)}
-.reflection{
-  margin-top:64px;
-  padding:32px;
-  background:var(--deep);
-  border:1px solid var(--line);
-  position:relative;
-}
-.reflection h3{
-  font-family:Fraunces, Georgia, serif;
-  font-weight:400;
-  font-size:13px;
-  letter-spacing:.12em;
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  font-size:11px;
   text-transform:uppercase;
-  margin:0 0 16px;
-  color:var(--accent-light);
-  opacity:.9;
+  letter-spacing:.07em;
+  color:var(--muted);
 }
-.reflection .prompt{
-  font-size:15px;
-  color:var(--text-2);
-  margin:0 0 20px;
-  line-height:1.7;
-}
-.reflection textarea{
+.field textarea{
   width:100%;
   min-height:160px;
-  background:var(--bg);
+  background:var(--deep);
   border:1px solid var(--line-2);
   color:var(--text);
   padding:20px;
@@ -234,7 +182,7 @@ form{margin:0}
   resize:vertical;
   border-radius:0;
 }
-.reflection textarea:focus{outline:none;border-color:var(--accent)}
+.field textarea:focus{outline:none;border-color:var(--accent)}
 .nav{
   display:flex;
   justify-content:space-between;
@@ -266,16 +214,8 @@ form{margin:0}
 .btn.primary:hover{background:var(--accent-light);border-color:var(--accent-light)}
 .btn:disabled{opacity:.45;cursor:not-allowed}
 .spacer{flex:1}
-.section-title{
-  font-family:Fraunces, Georgia, serif;
-  font-size:16px;
-  font-weight:450;
-  margin:32px 0 8px;
-  color:var(--accent-light);
-  letter-spacing:.01em;
-}
 
-/* simple thank-you overlay */
+/* thank-you overlay */
 #thankYou{
   position:fixed;
   inset:0;
@@ -306,7 +246,7 @@ form{margin:0}
 <div class="wrap">
   <header class="site-header">
     <div class="logo-wrap">
-      <!-- replace with your logo src -->
+      <!-- replace with your logo -->
       <img class="logo" src="logo.png" alt="SWA — Structural Workforce Audit">
     </div>
     <div class="eyebrow">Structural Workforce Audit</div>
@@ -319,13 +259,17 @@ form{margin:0}
   </header>
 
   <form id="auditForm" action="https://example.com/submit" method="post">
-    <!-- PAGE 1: example – you can extend with more pages following same pattern -->
+    <!-- SECTION I -->
     <div class="page active">
       <div class="surface">
         <div class="page-head">
-          <h2>Execution continuity</h2>
-          <div class="step">Section 1 of X</div>
+          <h2>SECTION I — OPERATIONAL MOVEMENT</h2>
+          <div class="step">Section 1 of 5</div>
         </div>
+
+        <p class="intro">
+          Structural Position: evaluates whether operational systems support sustainable execution movement.
+        </p>
 
         <div class="scale-legend">
           <div class="num">1</div><div>Never / not present</div>
@@ -337,12 +281,9 @@ form{margin:0}
 
         <div class="questions">
           <div class="question">
-            <div class="q-text">
-              <span class="num">1.</span>
-              Operational handovers are consistently completed within expected timeframes.
-            </div>
+            <div class="q-text"><span class="num">1.</span> Operational work moves consistently through teams and departments without repeated disruption.</div>
             <div class="scale" data-name="q1">
-              <label><input type="radio" name="q1" value="1" required><span>1</span></label>
+              <label><input type="radio" name="q1" value="1"><span>1</span></label>
               <label><input type="radio" name="q1" value="2"><span>2</span></label>
               <label><input type="radio" name="q1" value="3"><span>3</span></label>
               <label><input type="radio" name="q1" value="4"><span>4</span></label>
@@ -351,12 +292,9 @@ form{margin:0}
           </div>
 
           <div class="question">
-            <div class="q-text">
-              <span class="num">2.</span>
-              Operational routing changes frequently outside intended processes.
-            </div>
+            <div class="q-text"><span class="num">2.</span> Workflow movement remains stable during periods of increased operational demand.</div>
             <div class="scale" data-name="q2">
-              <label><input type="radio" name="q2" value="1" required><span>1</span></label>
+              <label><input type="radio" name="q2" value="1"><span>1</span></label>
               <label><input type="radio" name="q2" value="2"><span>2</span></label>
               <label><input type="radio" name="q2" value="3"><span>3</span></label>
               <label><input type="radio" name="q2" value="4"><span>4</span></label>
@@ -365,12 +303,9 @@ form{margin:0}
           </div>
 
           <div class="question">
-            <div class="q-text">
-              <span class="num">3.</span>
-              Cross-functional coordination remains stable during operational pressure.
-            </div>
+            <div class="q-text"><span class="num">3.</span> Operational coordination relies heavily on repeated manual follow-up.</div>
             <div class="scale" data-name="q3">
-              <label><input type="radio" name="q3" value="1" required><span>1</span></label>
+              <label><input type="radio" name="q3" value="1"><span>1</span></label>
               <label><input type="radio" name="q3" value="2"><span>2</span></label>
               <label><input type="radio" name="q3" value="3"><span>3</span></label>
               <label><input type="radio" name="q3" value="4"><span>4</span></label>
@@ -379,41 +314,455 @@ form{margin:0}
           </div>
 
           <div class="question">
-            <div class="q-text">
-              <span class="num">4.</span>
-              Operational movement becomes increasingly reactive during periods of strain.
-            </div>
+            <div class="q-text"><span class="num">4.</span> Operational routing changes frequently outside intended processes.</div>
             <div class="scale" data-name="q4">
-              <label><input type="radio" name="q4" value="1" required><span>1</span></label>
+              <label><input type="radio" name="q4" value="1"><span>1</span></label>
               <label><input type="radio" name="q4" value="2"><span>2</span></label>
               <label><input type="radio" name="q4" value="3"><span>3</span></label>
               <label><input type="radio" name="q4" value="4"><span>4</span></label>
               <label><input type="radio" name="q4" value="5"><span>5</span></label>
             </div>
           </div>
-        </div> <!-- questions -->
 
-        <div class="observation-block">
-          <label class="field">
-            Structural Observation
-            <textarea
-              name="execution_observation"
-              rows="5"
-              placeholder="What recurring operational pattern most frequently interferes with execution continuity, coordination movement, or sustainable operational flow across the organisation?"
-            ></textarea>
-          </label>
+          <div class="question">
+            <div class="q-text"><span class="num">5.</span> Cross-functional coordination remains stable during operational pressure.</div>
+            <div class="scale" data-name="q5">
+              <label><input type="radio" name="q5" value="1"><span>1</span></label>
+              <label><input type="radio" name="q5" value="2"><span>2</span></label>
+              <label><input type="radio" name="q5" value="3"><span>3</span></label>
+              <label><input type="radio" name="q5" value="4"><span>4</span></label>
+              <label><input type="radio" name="q5" value="5"><span>5</span></label>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="num">6.</span> Operational movement becomes increasingly reactive during periods of strain.</div>
+            <div class="scale" data-name="q6">
+              <label><input type="radio" name="q6" value="1"><span>1</span></label>
+              <label><input type="radio" name="q6" value="2"><span>2</span></label>
+              <label><input type="radio" name="q6" value="3"><span>3</span></label>
+              <label><input type="radio" name="q6" value="4"><span>4</span></label>
+              <label><input type="radio" name="q6" value="5"><span>5</span></label>
+            </div>
+          </div>
         </div>
+
+        <label class="field">
+          Structural Observation
+          <textarea name="obs1" placeholder="What recurring operational behaviour most frequently disrupts execution continuity, workflow movement, or sustainable coordination across the organisation?"></textarea>
+        </label>
+
+        <div class="nav">
+          <button type="button" class="btn prev">Previous</button>
+          <span class="spacer"></span>
+          <button type="button" class="btn primary next">Next Section</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION II -->
+    <div class="page">
+      <div class="surface">
+        <div class="page-head">
+          <h2>SECTION II — ROLE &amp; EXECUTION STABILITY</h2>
+          <div class="step">Section 2 of 5</div>
+        </div>
+
+        <p class="intro">
+          Structural Position: evaluates whether responsibilities remain structurally sustainable.
+        </p>
+
+        <div class="scale-legend">
+          <div class="num">1</div><div>Never / not present</div>
+          <div class="num">2</div><div>Rarely</div>
+          <div class="num">3</div><div>Sometimes</div>
+          <div class="num">4</div><div>Often</div>
+          <div class="num">5</div><div>Consistently / always</div>
+        </div>
+
+        <div class="questions">
+          <div class="question">
+            <div class="q-text"><span class="num">7.</span> Operational ownership remains consistent across teams and departments.</div>
+            <div class="scale" data-name="q7">
+              <label><input type="radio" name="q7" value="1"><span>1</span></label>
+              <label><input type="radio" name="q7" value="2"><span>2</span></label>
+              <label><input type="radio" name="q7" value="3"><span>3</span></label>
+              <label><input type="radio" name="q7" value="4"><span>4</span></label>
+              <label><input type="radio" name="q7" value="5"><span>5</span></label>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="num">8.</span> Responsibility movement frequently shifts during operational pressure.</div>
+            <div class="scale" data-name="q8">
+              <label><input type="radio" name="q8" value="1"><span>1</span></label>
+              <label><input type="radio" name="q8" value="2"><span>2</span></label>
+              <label><input type="radio" name="q8" value="3"><span>3</span></label>
+              <label><input type="radio" name="q8" value="4"><span>4</span></label>
+              <label><input type="radio" name="q8" value="5"><span>5</span></label>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="num">9.</span> Execution reliability depends heavily on specific individuals.</div>
+            <div class="scale" data-name="q9">
+              <label><input type="radio" name="q9" value="1"><span>1</span></label>
+              <label><input type="radio" name="q9" value="2"><span>2</span></label>
+              <label><input type="radio" name="q9" value="3"><span>3</span></label>
+              <label><input type="radio" name="q9" value="4"><span>4</span></label>
+              <label><input type="radio" name="q9" value="5"><span>5</span></label>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="num">10.</span> Accountability behaviour weakens during periods of operational strain.</div>
+            <div class="scale" data-name="q10">
+              <label><input type="radio" name="q10" value="1"><span>1</span></label>
+              <label><input type="radio" name="q10" value="2"><span>2</span></label>
+              <label><input type="radio" name="q10" value="3"><span>3</span></label>
+              <label><input type="radio" name="q10" value="4"><span>4</span></label>
+              <label><input type="radio" name="q10" value="5"><span>5</span></label>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="num">11.</span> Operational continuity remains stable when key individuals are unavailable.</div>
+            <div class="scale" data-name="q11">
+              <label><input type="radio" name="q11" value="1"><span>1</span></label>
+              <label><input type="radio" name="q11" value="2"><span>2</span></label>
+              <label><input type="radio" name="q11" value="3"><span>3</span></label>
+              <label><input type="radio" name="q11" value="4"><span>4</span></label>
+              <label><input type="radio" name="q11" value="5"><span>5</span></label>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="num">12.</span> Responsibility boundaries become increasingly inconsistent as complexity expands.</div>
+            <div class="scale" data-name="q12">
+              <label><input type="radio" name="q12" value="1"><span>1</span></label>
+              <label><input type="radio" name="q12" value="2"><span>2</span></label>
+              <label><input type="radio" name="q12" value="3"><span>3</span></label>
+              <label><input type="radio" name="q12" value="4"><span>4</span></label>
+              <label><input type="radio" name="q12" value="5"><span>5</span></label>
+            </div>
+          </div>
+        </div>
+
+        <label class="field">
+          Structural Observation
+          <textarea name="obs2" placeholder="What recurring operational condition most frequently destabilises accountability, ownership continuity, or sustainable execution behaviour?"></textarea>
+        </label>
+
+        <div class="nav">
+          <button type="button" class="btn prev">Previous</button>
+          <span class="spacer"></span>
+          <button type="button" class="btn primary next">Next Section</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION III -->
+    <div class="page">
+      <div class="surface">
+        <div class="page-head">
+          <h2>SECTION III — VISIBILITY &amp; INFORMATIONAL MOVEMENT</h2>
+          <div class="step">Section 3 of 5</div>
+        </div>
+
+        <p class="intro">
+          Structural Position: evaluates whether operational visibility remains reliable.
+        </p>
+
+        <div class="scale-legend">
+          <div class="num">1</div><div>Never / not present</div>
+          <div class="num">2</div><div>Rarely</div>
+          <div class="num">3</div><div>Sometimes</div>
+          <div class="num">4</div><div>Often</div>
+          <div class="num">5</div><div>Consistently / always</div>
+        </div>
+
+        <div class="questions">
+          <div class="question">
+            <div class="q-text"><span class="num">13.</span> Teams receive reliable operational information required to maintain execution continuity.</div>
+            <div class="scale" data-name="q13">
+              <label><input type="radio" name="q13" value="1"><span>1</span></label>
+              <label><input type="radio" name="q13" value="2"><span>2</span></label>
+              <label><input type="radio" name="q13" value="3"><span>3</span></label>
+              <label><input type="radio" name="q13" value="4"><span>4</span></label>
+              <label><input type="radio" name="q13" value="5"><span>5</span></label>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="num">14.</span> Operational visibility weakens during periods of increased demand.</div>
+            <div class="scale" data-name="q14">
+              <label><input type="radio" name="q14" value="1"><span>1</span></label>
+              <label><input type="radio" name="q14" value="2"><span>2</span></label>
+              <label><input type="radio" name="q14" value="3"><span>3</span></label>
+              <label><input type="radio" name="q14" value="4"><span>4</span></label>
+              <label><input type="radio" name="q14" value="5"><span>5</span></label>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="num">15.</span> Departments frequently operate with inconsistent operational interpretation.</div>
+            <div class="scale" data-name="q15">
+              <label><input type="radio" name="q15" value="1"><span>1</span></label>
+              <label><input type="radio" name="q15" value="2"><span>2</span></label>
+              <label><input type="radio" name="q15" value="3"><span>3</span></label>
+              <label><input type="radio" name="q15" value="4"><span>4</span></label>
+              <label><input type="radio" name="q15" value="5"><span>5</span></label>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="num">16.</span> Reporting movement becomes fragmented during operational strain.</div>
+            <div class="scale" data-name="q16">
+              <label><input type="radio" name="q16" value="1"><span>1</span></label>
+              <label><input type="radio" name="q16" value="2"><span>2</span></label>
+              <label><input type="radio" name="q16" value="3"><span>3</span></label>
+              <label><input type="radio" name="q16" value="4"><span>4</span></label>
+              <label><input type="radio" name="q16" value="5"><span>5</span></label>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="num">17.</span> Operational reporting reflects lived execution conditions accurately.</div>
+            <div class="scale" data-name="q17">
+              <label><input type="radio" name="q17" value="1"><span>1</span></label>
+              <label><input type="radio" name="q17" value="2"><span>2</span></label>
+              <label><input type="radio" name="q17" value="3"><span>3</span></label>
+              <label><input type="radio" name="q17" value="4"><span>4</span></label>
+              <label><input type="radio" name="q17" value="5"><span>5</span></label>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="num">18.</span> Informational movement supports sustainable operational coordination across the organisation.</div>
+            <div class="scale" data-name="q18">
+              <label><input type="radio" name="q18" value="1"><span>1</span></label>
+              <label><input type="radio" name="q18" value="2"><span>2</span></label>
+              <label><input type="radio" name="q18" value="3"><span>3</span></label>
+              <label><input type="radio" name="q18" value="4"><span>4</span></label>
+              <label><input type="radio" name="q18" value="5"><span>5</span></label>
+            </div>
+          </div>
+        </div>
+
+        <label class="field">
+          Structural Observation
+          <textarea name="obs3" placeholder="What operational condition most frequently limits reliable visibility into execution movement, coordination behaviour, or operational awareness?"></textarea>
+        </label>
+
+        <div class="nav">
+          <button type="button" class="btn prev">Previous</button>
+          <span class="spacer"></span>
+          <button type="button" class="btn primary next">Next Section</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION IV -->
+    <div class="page">
+      <div class="surface">
+        <div class="page-head">
+          <h2>SECTION IV — DEPENDENCY LOAD &amp; OPERATIONAL PRESSURE</h2>
+          <div class="step">Section 4 of 5</div>
+        </div>
+
+        <p class="intro">
+          Structural Position: evaluates how environments behave under structural pressure.
+        </p>
+
+        <div class="scale-legend">
+          <div class="num">1</div><div>Never / not present</div>
+          <div class="num">2</div><div>Rarely</div>
+          <div class="num">3</div><div>Sometimes</div>
+          <div class="num">4</div><div>Often</div>
+          <div class="num">5</div><div>Consistently / always</div>
+        </div>
+
+        <div class="questions">
+          <div class="question">
+            <div class="q-text"><span class="num">19.</span> Operational continuity depends heavily on specific individuals or teams.</div>
+            <div class="scale" data-name="q19">
+              <label><input type="radio" name="q19" value="1"><span>1</span></label>
+              <label><input type="radio" name="q19" value="2"><span>2</span></label>
+              <label><input type="radio" name="q19" value="3"><span>3</span></label>
+              <label><input type="radio" name="q19" value="4"><span>4</span></label>
+              <label><input type="radio" name="q19" value="5"><span>5</span></label>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="num">20.</span> Work regularly requires manual intervention to maintain continuity.</div>
+            <div class="scale" data-name="q20">
+              <label><input type="radio" name="q20" value="1"><span>1</span></label>
+              <label><input type="radio" name="q20" value="2"><span>2</span></label>
+              <label><input type="radio" name="q20" value="3"><span>3</span></label>
+              <label><input type="radio" name="q20" value="4"><span>4</span></label>
+              <label><input type="radio" name="q20" value="5"><span>5</span></label>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="num">21.</span> Operational systems remain stable during increased execution demand.</div>
+            <div class="scale" data-name="q21">
+              <label><input type="radio" name="q21" value="1"><span>1</span></label>
+              <label><input type="radio" name="q21" value="2"><span>2</span></label>
+              <label><input type="radio" name="q21" value="3"><span>3</span></label>
+              <label><input type="radio" name="q21" value="4"><span>4</span></label>
+              <label><input type="radio" name="q21" value="5"><span>5</span></label>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="num">22.</span> Urgency regularly replaces stable operational prioritisation behaviour.</div>
+            <div class="scale" data-name="q22">
+              <label><input type="radio" name="q22" value="1"><span>1</span></label>
+              <label><input type="radio" name="q22" value="2"><span>2</span></label>
+              <label><input type="radio" name="q22" value="3"><span>3</span></label>
+              <label><input type="radio" name="q22" value="4"><span>4</span></label>
+              <label><input type="radio" name="q22" value="5"><span>5</span></label>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="num">23.</span> Operational strain accumulates faster than systems adapt structurally.</div>
+            <div class="scale" data-name="q23">
+              <label><input type="radio" name="q23" value="1"><span>1</span></label>
+              <label><input type="radio" name="q23" value="2"><span>2</span></label>
+              <label><input type="radio" name="q23" value="3"><span>3</span></label>
+              <label><input type="radio" name="q23" value="4"><span>4</span></label>
+              <label><input type="radio" name="q23" value="5"><span>5</span></label>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="num">24.</span> Structural systems absorb complexity sustainably without excessive manual coordination.</div>
+            <div class="scale" data-name="q24">
+              <label><input type="radio" name="q24" value="1"><span>1</span></label>
+              <label><input type="radio" name="q24" value="2"><span>2</span></label>
+              <label><input type="radio" name="q24" value="3"><span>3</span></label>
+              <label><input type="radio" name="q24" value="4"><span>4</span></label>
+              <label><input type="radio" name="q24" value="5"><span>5</span></label>
+            </div>
+          </div>
+        </div>
+
+        <label class="field">
+          Structural Observation
+          <textarea name="obs4" placeholder="What recurring dependency or operational strain most significantly affects sustainable execution continuity across the organisation?"></textarea>
+        </label>
+
+        <div class="nav">
+          <button type="button" class="btn prev">Previous</button>
+          <span class="spacer"></span>
+          <button type="button" class="btn primary next">Next Section</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION V -->
+    <div class="page">
+      <div class="surface">
+        <div class="page-head">
+          <h2>SECTION V — STRUCTURAL SYSTEM INTERACTION</h2>
+          <div class="step">Section 5 of 5</div>
+        </div>
+
+        <p class="intro">
+          Structural Position: evaluates broader interaction patterns.
+        </p>
+
+        <div class="scale-legend">
+          <div class="num">1</div><div>Never / not present</div>
+          <div class="num">2</div><div>Rarely</div>
+          <div class="num">3</div><div>Sometimes</div>
+          <div class="num">4</div><div>Often</div>
+          <div class="num">5</div><div>Consistently / always</div>
+        </div>
+
+        <div class="questions">
+          <div class="question">
+            <div class="q-text"><span class="num">25.</span> Operational movement across the organisation depends more on individual effort than stable structural systems.</div>
+            <div class="scale" data-name="q25">
+              <label><input type="radio" name="q25" value="1"><span>1</span></label>
+              <label><input type="radio" name="q25" value="2"><span>2</span></label>
+              <label><input type="radio" name="q25" value="3"><span>3</span></label>
+              <label><input type="radio" name="q25" value="4"><span>4</span></label>
+              <label><input type="radio" name="q25" value="5"><span>5</span></label>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="num">26.</span> Operational systems remain structurally stable during periods of rapid organisational demand.</div>
+            <div class="scale" data-name="q26">
+              <label><input type="radio" name="q26" value="1"><span>1</span></label>
+              <label><input type="radio" name="q26" value="2"><span>2</span></label>
+              <label><input type="radio" name="q26" value="3"><span>3</span></label>
+              <label><input type="radio" name="q26" value="4"><span>4</span></label>
+              <label><input type="radio" name="q26" value="5"><span>5</span></label>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="num">27.</span> Work frequently reroutes informally to maintain execution continuity.</div>
+            <div class="scale" data-name="q27">
+              <label><input type="radio" name="q27" value="1"><span>1</span></label>
+              <label><input type="radio" name="q27" value="2"><span>2</span></label>
+              <label><input type="radio" name="q27" value="3"><span>3</span></label>
+              <label><input type="radio" name="q27" value="4"><span>4</span></label>
+              <label><input type="radio" name="q27" value="5"><span>5</span></label>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="num">28.</span> Organisational systems continue functioning effectively without excessive escalation behaviour.</div>
+            <div class="scale" data-name="q28">
+              <label><input type="radio" name="q28" value="1"><span>1</span></label>
+              <label><input type="radio" name="q28" value="2"><span>2</span></label>
+              <label><input type="radio" name="q28" value="3"><span>3</span></label>
+              <label><input type="radio" name="q28" value="4"><span>4</span></label>
+              <label><input type="radio" name="q28" value="5"><span>5</span></label>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="num">29.</span> Operational continuity weakens noticeably during periods of increased organisational pressure.</div>
+            <div class="scale" data-name="q29">
+              <label><input type="radio" name="q29" value="1"><span>1</span></label>
+              <label><input type="radio" name="q29" value="2"><span>2</span></label>
+              <label><input type="radio" name="q29" value="3"><span>3</span></label>
+              <label><input type="radio" name="q29" value="4"><span>4</span></label>
+              <label><input type="radio" name="q29" value="5"><span>5</span></label>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="num">30.</span> The organisation currently operates through structurally sustainable operational systems.</div>
+            <div class="scale" data-name="q30">
+              <label><input type="radio" name="q30" value="1"><span>1</span></label>
+              <label><input type="radio" name="q30" value="2"><span>2</span></label>
+              <label><input type="radio" name="q30" value="3"><span>3</span></label>
+              <label><input type="radio" name="q30" value="4"><span>4</span></label>
+              <label><input type="radio" name="q30" value="5"><span>5</span></label>
+            </div>
+          </div>
+        </div>
+
+        <label class="field">
+          Structural Observation
+          <textarea name="obs5" placeholder="What recurring organisational behaviour most clearly signals increasing operational strain or structural instability throughout the workforce environment?"></textarea>
+        </label>
 
         <div class="nav">
           <button type="button" class="btn prev">Previous</button>
           <span class="spacer"></span>
           <button type="submit" class="btn primary">Submit</button>
         </div>
-      </div> <!-- surface -->
-    </div> <!-- page -->
-
-    <!-- add more .page blocks here for additional sections -->
-
+      </div>
+    </div>
   </form>
 </div>
 
@@ -441,25 +790,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let ok = true;
 
     page.querySelectorAll('.error').forEach(e => e.classList.remove('error'));
-    page.querySelectorAll('input').forEach(i => i.style.borderColor = '');
 
-    if (idx === 0) {
-      // example: participant fields if you add them
-      page.querySelectorAll('input[required]').forEach(inp => {
-        if (inp.type === 'text' || inp.type === 'email') {
-          if (!inp.value.trim()) {
-            ok = false;
-            inp.style.borderColor = '#7a3f23';
-          }
-          if (inp.type === 'email' && inp.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inp.value)) {
-            ok = false;
-            inp.style.borderColor = '#7a3f23';
-          }
-        }
-      });
-    }
-
-    // scale validation for this page
     page.querySelectorAll('.scale').forEach(scale => {
       const name = scale.dataset.name;
       if (!page.querySelector(`input[name="${name}"]:checked`)) {
@@ -469,7 +800,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (!ok) {
-      const firstErr = page.querySelector('.error, input[style*="border-color"]');
+      const firstErr = page.querySelector('.error');
       if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
     return ok;
